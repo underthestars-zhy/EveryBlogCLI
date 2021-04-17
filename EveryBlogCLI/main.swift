@@ -54,10 +54,10 @@ struct EveryBlogCLI: ParsableCommand {
             let url = URL(string: at!)!
             do {
                 fileManager.createFile(atPath: url.appendingPathComponent("config.yml").path, contents: config.data(using: .utf8), attributes: nil)
-                try fileManager.createDirectory(at: url.appendingPathComponent("post"), withIntermediateDirectories: true, attributes: nil)
-                try fileManager.createDirectory(at: url.appendingPathComponent("resources"), withIntermediateDirectories: true, attributes: nil)
-                try fileManager.createDirectory(at: url.appendingPathComponent("themes"), withIntermediateDirectories: true, attributes: nil)
-                try fileManager.createDirectory(at: url.appendingPathComponent("pages"), withIntermediateDirectories: true, attributes: nil)
+                try fileManager.createDirectory(atPath: url.appendingPathComponent("posts", isDirectory: true).path, withIntermediateDirectories: true, attributes: nil)
+                try fileManager.createDirectory(atPath: url.appendingPathComponent("resources", isDirectory: true).path, withIntermediateDirectories: true, attributes: nil)
+                try fileManager.createDirectory(atPath: url.appendingPathComponent("themes", isDirectory: true).path, withIntermediateDirectories: true, attributes: nil)
+                try fileManager.createDirectory(atPath: url.appendingPathComponent("pages", isDirectory: true).path, withIntermediateDirectories: true, attributes: nil)
             } catch {
                 print(error.localizedDescription)
             }
